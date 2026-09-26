@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": "praise-god-im-free-journal",
+      "name": "Praise God I'm Free Journal",
+      "type": "physical",
+      "price": 24,
+      "currency": "USD",
+      "priceDisplay": "$24",
+      "checkoutUrl": "",
+      "checkoutLabel": "Buy securely"
+    },
+    {
+      "id": "far-from-temptation",
+      "name": "Far from Temptation",
+      "type": "physical",
+      "price": 15.99,
+      "currency": "USD",
+      "priceDisplay": "$15.99",
+      "checkoutUrl": "",
+      "checkoutLabel": "Buy securely"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "id": "pink-purple-out-2026",
+      "status": "current",
+      "showOnHome": true,
+      "sortOrder": 1,
+      "title": "Pink & Purple Out Tea",
+      "summary": "Survivor voices, community leaders, and conversations about healing.",
+      "description": "Survivor testimonials, community voices, and practical conversations about mental health, mindfulness, healing, and survival.",
+      "dateISO": "2026-10-17",
+      "dateLabel": "October 17, 2026",
+      "time": "12:00–3:00 PM",
+      "location": "Ypsilanti District Library Community Room, Ypsilanti, Michigan",
+      "caption": "Current event · hosted through VASHTI.",
+      "image": "assets/optimized/event-pink-purple-out-1280.webp",
+      "imageAlt": "Pink and Purple Out Tea flyer for October 17, 2026 at Ypsilanti District Library",
+      "imageWidth": 1280,
+      "imageHeight": 722,
+      "buttonLabel": "Ask about registration",
+      "buttonLink": "mailto:visionsdba@gmail.com?subject=Pink%20%26%20Purple%20Out%20Tea%20registration"
+    }
+  ]
+}

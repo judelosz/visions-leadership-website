@@ -1,0 +1,38 @@
+# Keep the repository limited to production website source. The project folder also
+# contains owner correspondence, raw media, course materials, and working archives.
+*
+
+!.gitignore
+!README.md
+!MONIQUE_GO_LIVE_CHECKLIST.md
+!*.html
+!styles.css
+!script.js
+!netlify.toml
+!robots.txt
+!sitemap.xml
+!_redirects
+
+!assets/
+assets/*
+!assets/optimized/
+!assets/optimized/**
+!assets/event-uploads/
+!assets/event-uploads/**
+
+!content/
+!content/**
+
+!admin/
+!admin/**
+
+!scripts/
+scripts/*
+!scripts/build_public.mjs
+
+!tests/
+tests/*
+!tests/smoke.js
+
+# Generated output is rebuilt by Netlify.
+dist/

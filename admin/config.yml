@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/event-uploads"
+public_folder: "/assets/event-uploads"
+publish_mode: simple
+
+collections:
+  - name: "site_data"
+    label: "Website content"
+    files:
+      - name: "events"
+        label: "Events and announcements"
+        file: "content/events.json"
+        format: "json"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.dateLabel}} — {{fields.title}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Short unique label, for example spring-workshop-2027" }
+              - { label: "Status", name: "status", widget: "select", options: ["current", "archive", "draft"], default: "draft" }
+              - { label: "Show on homepage", name: "showOnHome", widget: "boolean", default: false }
+              - { label: "Order", name: "sortOrder", widget: "number", value_type: "int", default: 10 }
+              - { label: "Event title", name: "title", widget: "string" }
+              - { label: "Short homepage summary", name: "summary", widget: "string" }
+              - { label: "Full description", name: "description", widget: "text" }
+              - { label: "Date", name: "dateISO", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "Date as visitors should see it", name: "dateLabel", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Image caption", name: "caption", widget: "string", required: false }
+              - { label: "Flyer or event image", name: "image", widget: "image" }
+              - { label: "Image description", name: "imageAlt", widget: "string" }
+              - { label: "Image width", name: "imageWidth", widget: "number", value_type: "int", default: 1200 }
+              - { label: "Image height", name: "imageHeight", widget: "number", value_type: "int", default: 800 }
+              - { label: "Button label", name: "buttonLabel", widget: "string", default: "Event details" }
+              - { label: "Button link", name: "buttonLink", widget: "string" }

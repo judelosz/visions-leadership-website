@@ -1,0 +1,6 @@
+/impact.html /about.html#impact 301
+/organizations.html /course.html#organizations 301
+/services.html /course.html 301
+/home / 301
+http://visionsleadershipclc.com/* https://www.visionsleadershipclc.com/:splat 301!
+https://visionsleadershipclc.com/* https://www.visionsleadershipclc.com/:splat 301!
