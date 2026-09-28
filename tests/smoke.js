@@ -48,8 +48,13 @@ const assert = (condition, message) => {
         .map((link) => link.getAttribute("href"))
         .filter((href) => href && !/^(https?:|mailto:|tel:|#)/.test(href)));
       for (const href of localLinks) {
-        const localFile = href.split(/[?#]/)[0];
-        assert(!localFile || fs.existsSync(path.join(root, localFile)), `Broken local link on ${file}: ${href}`);
+        const localFile = href.split(/[?#]/)[0].replace(/^\/+/, "");
+        const localCandidates = [
+          path.join(root, localFile),
+          path.join(root, `${localFile}.html`),
+          path.join(root, localFile, "index.html"),
+        ];
+        assert(!localFile || localCandidates.some((candidate) => fs.existsSync(candidate)), `Broken local link on ${file}: ${href}`);
       }
     }
 

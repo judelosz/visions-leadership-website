@@ -36,3 +36,6 @@ tests/*
 
 # Generated output is rebuilt by Netlify.
 dist/
+
+# Local Netlify folder
+.netlify
