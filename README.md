@@ -31,7 +31,7 @@ Then open `http://127.0.0.1:4173`.
 - `LAUNCH_AND_MIGRATION_REPORT.md` — exact migration, costs, domain cutover, events editing, and Wix retirement plan
 - `BOOK_CHECKOUT_MIGRATION.md` — audited Wix product data, missing fulfillment details, and the secure-checkout handoff
 
-The forms are configured for Netlify and become live after the first Netlify deployment. The individual course button uses Monique's confirmed Kajabi checkout. Book and journal links prepare an email order request until permanent checkout links are approved.
+The forms are configured for Netlify and become live after the first Netlify deployment. The individual course button uses Monique's confirmed Kajabi checkout. The store contains the confirmed U.S.-only catalog and inventory; book and journal links prepare an email order request until Stripe activation is complete and permanent checkout links are added to `content/products.json`.
 
 ## Build the public package
 

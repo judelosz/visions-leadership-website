@@ -4,21 +4,47 @@
       "id": "praise-god-im-free-journal",
       "name": "Praise God I'm Free Journal",
       "type": "physical",
-      "price": 24,
+      "price": 24.99,
       "currency": "USD",
-      "priceDisplay": "$24",
+      "priceDisplay": "$24.99",
+      "inventory": 5,
+      "availableCountries": ["US"],
+      "shippingDisplay": "Free U.S. shipping and handling",
+      "checkoutUrl": "",
+      "checkoutLabel": "Buy securely"
+    },
+    {
+      "id": "praise-god-im-free-book",
+      "name": "Praise God, I'm Free",
+      "type": "physical",
+      "price": 9.99,
+      "currency": "USD",
+      "priceDisplay": "$9.99",
+      "inventory": 5,
+      "availableCountries": ["US"],
       "checkoutUrl": "",
       "checkoutLabel": "Buy securely"
     },
     {
       "id": "far-from-temptation",
-      "name": "Far from Temptation",
+      "name": "Far From Temptation: The Power of Love and Forgiveness",
       "type": "physical",
       "price": 15.99,
       "currency": "USD",
       "priceDisplay": "$15.99",
+      "inventory": 5,
+      "availableCountries": ["US"],
       "checkoutUrl": "",
       "checkoutLabel": "Buy securely"
+    },
+    {
+      "id": "anger-management-journal",
+      "name": "Anger Management Journal",
+      "type": "physical",
+      "inventory": 0,
+      "availableCountries": ["US"],
+      "availability": "out-of-stock",
+      "checkoutUrl": ""
     }
   ]
 }

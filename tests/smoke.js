@@ -131,9 +131,11 @@ const assert = (condition, message) => {
   await interactionPage.screenshot({ path: "/tmp/visions-travel-desktop.png", fullPage: true });
   await interactionPage.goto(`${baseUrl}/store.html`, { waitUntil: "domcontentloaded" });
   assert((await interactionPage.locator('a[href*="visionsleadershipclc.com/product-page"]').count()) === 0, "Store still depends on former-site product links");
-  assert((await interactionPage.locator('[data-product-id="praise-god-im-free-journal"] .store-row__price').textContent()).trim() === "$24", "Journal price does not match the migrated catalog");
+  assert((await interactionPage.locator('[data-product-id="praise-god-im-free-journal"] .store-row__price').textContent()).trim() === "$24.99", "Journal price does not match the migrated catalog");
+  assert((await interactionPage.locator('[data-product-id="praise-god-im-free-book"] .store-row__price').textContent()).trim() === "$9.99", "Praise God book price does not match the migrated catalog");
   assert((await interactionPage.locator('[data-product-id="far-from-temptation"] .store-row__price').textContent()).trim() === "$15.99", "Book price does not match the migrated catalog");
-  assert((await interactionPage.locator('[data-product-action][href^="mailto:"]').count()) === 2, "Book email fallbacks are missing before secure checkout links are approved");
+  assert((await interactionPage.locator('[data-product-id="anger-management-journal"] .store-row__status').textContent()).trim() === "Out of stock", "Out-of-stock journal status is missing");
+  assert((await interactionPage.locator('[data-product-action][href^="mailto:"]').count()) === 3, "Book email fallbacks are missing before secure checkout links are approved");
   await interactionPage.screenshot({ path: "/tmp/visions-store-desktop.png", fullPage: true });
   await interactionPage.goto(`${baseUrl}/transitional-health.html`, { waitUntil: "domcontentloaded" });
   await interactionPage.screenshot({ path: "/tmp/visions-transitional-health-desktop.png", fullPage: true });
