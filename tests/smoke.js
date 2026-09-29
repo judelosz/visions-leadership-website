@@ -63,6 +63,27 @@ assert(!/visionsleadershipclc\.com/.test(redirectRules), "Custom-domain redirect
 
     await page.goto(`${baseUrl}/index.html`, { waitUntil: "domcontentloaded" });
     await page.screenshot({ path: `/tmp/visions-home-${viewport.label}.png`, fullPage: true });
+    if (viewport.width <= 820) {
+      await page.locator(".nav-toggle").click();
+      const menuState = await page.locator(".site-nav").evaluate((menu) => {
+        const rect = menu.getBoundingClientRect();
+        const link = menu.querySelector("a");
+        return {
+          display: getComputedStyle(menu).display,
+          background: getComputedStyle(menu).backgroundColor,
+          linkColor: link ? getComputedStyle(link).color : "",
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+        };
+      });
+      assert(menuState.display === "block", `Mobile menu did not open at ${viewport.width}px`);
+      assert(menuState.left <= 1 && menuState.width >= viewport.width - 2, `Mobile menu did not cover the viewport at ${viewport.width}px: ${JSON.stringify(menuState)}`);
+      assert(menuState.height >= viewport.height - 80, `Mobile menu was constrained to the header at ${viewport.width}px: ${JSON.stringify(menuState)}`);
+      assert(menuState.background === "rgb(16, 58, 50)" && menuState.linkColor === "rgb(255, 254, 250)", `Mobile menu contrast is incorrect at ${viewport.width}px: ${JSON.stringify(menuState)}`);
+      await page.screenshot({ path: `/tmp/visions-menu-${viewport.label}.png`, fullPage: false });
+      await page.locator(".nav-toggle").click();
+    }
     await page.close();
   }
 

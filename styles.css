@@ -504,9 +504,10 @@ h3 { font-size: var(--type-heading); }
   .testimonial-card--forest { margin-top: 0; }
   .testimonial-card--wide { grid-column: auto; }
   :root { --page: min(100% - 32px, 760px); --section: clamp(44px, 9vw, 68px); }
+  .site-header, .site-header.is-scrolled { background: var(--paper); backdrop-filter: none; }
   .nav-shell { min-height: 78px; grid-template-columns: 1fr auto; }
   .nav-toggle { display: block; }
-  .site-nav { position: fixed; inset: 78px 0 0; display: none; padding: 34px 24px; background: var(--forest); color: var(--white); }
+  .site-nav { position: fixed; inset: 78px 0 0; display: none; width: 100vw; overflow-y: auto; justify-self: stretch; padding: 34px 24px; background: var(--forest); color: var(--white); overscroll-behavior: contain; }
   .site-nav.is-open { display: block; }
   .site-nav ul { display: grid; gap: 3px; }
   .site-nav a { display: block; padding-block: 15px; border-bottom: 1px solid var(--line-light); color: var(--white); font-family: var(--font-display); font-size: 1.6rem; font-weight: 500; letter-spacing: -.02em; text-transform: none; }
