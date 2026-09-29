@@ -16,6 +16,9 @@ const assert = (condition, message) => {
   if (!condition) throw new Error(message);
 };
 
+const redirectRules = fs.readFileSync(path.join(root, "_redirects"), "utf8");
+assert(!/visionsleadershipclc\.com/.test(redirectRules), "Custom-domain redirect rules conflict with Netlify's primary-domain redirect");
+
 (async () => {
   const browserErrors = [];
   const browser = await chromium.launch({ headless: true });
@@ -134,6 +137,8 @@ const assert = (condition, message) => {
   assert((await interactionPage.locator('[data-product-id="praise-god-im-free-journal"] .store-row__price').textContent()).trim() === "$24.99", "Journal price does not match the migrated catalog");
   assert((await interactionPage.locator('[data-product-id="praise-god-im-free-book"] .store-row__price').textContent()).trim() === "$9.99", "Praise God book price does not match the migrated catalog");
   assert((await interactionPage.locator('[data-product-id="far-from-temptation"] .store-row__price').textContent()).trim() === "$15.99", "Book price does not match the migrated catalog");
+  assert((await interactionPage.getByText("Free U.S. shipping and handling", { exact: true }).count()) === 2, "Free shipping is not shown for the journal and Praise God book");
+  assert((await interactionPage.getByText(/Free U\.S\. shipping and handling/, { exact: false }).count()) === 3, "Free shipping is not shown for all three available titles");
   assert((await interactionPage.locator('[data-product-id="anger-management-journal"] .store-row__status').textContent()).trim() === "Out of stock", "Out-of-stock journal status is missing");
   assert((await interactionPage.locator('[data-product-action][href^="mailto:"]').count()) === 3, "Book email fallbacks are missing before secure checkout links are approved");
   await interactionPage.screenshot({ path: "/tmp/visions-store-desktop.png", fullPage: true });

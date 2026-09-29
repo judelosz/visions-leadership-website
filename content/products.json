@@ -22,6 +22,7 @@
       "priceDisplay": "$9.99",
       "inventory": 5,
       "availableCountries": ["US"],
+      "shippingDisplay": "Free U.S. shipping and handling",
       "checkoutUrl": "",
       "checkoutLabel": "Buy securely"
     },
@@ -34,6 +35,7 @@
       "priceDisplay": "$15.99",
       "inventory": 5,
       "availableCountries": ["US"],
+      "shippingDisplay": "Free U.S. shipping and handling",
       "checkoutUrl": "",
       "checkoutLabel": "Buy securely"
     },
