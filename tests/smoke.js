@@ -38,6 +38,7 @@ assert(!/visionsleadershipclc\.com/.test(redirectRules), "Custom-domain redirect
       assert((await page.locator("main").count()) === 1, `Missing main on ${file}`);
       assert((await page.locator("h1").count()) === 1, `Expected one h1 on ${file}`);
       assert((await page.locator("nav a").count()) === 9, `Expected nine navigation destinations on ${file}`);
+      assert(!/\bKajabi\b/i.test(await page.locator("body").innerText()), `Course-platform name is publicly visible on ${file}`);
 
       const metrics = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, content: document.documentElement.scrollWidth }));
       assert(metrics.content <= metrics.viewport, `Horizontal overflow on ${file} at ${viewport.width}px: ${JSON.stringify(metrics)}`);
@@ -88,6 +89,12 @@ assert(!/visionsleadershipclc\.com/.test(redirectRules), "Custom-domain redirect
   }
 
   const interactionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: "reduce" });
+  for (const file of ["privacy.html", "terms.html", "accessibility.html", "thank-you.html"]) {
+    const response = await interactionPage.goto(`${baseUrl}/${file}`, { waitUntil: "domcontentloaded" });
+    assert(response && response.ok(), `Failed to load ${file}`);
+    assert(!/\bKajabi\b/i.test(await interactionPage.locator("body").innerText()), `Course-platform name is publicly visible on ${file}`);
+  }
+
   await interactionPage.goto(`${baseUrl}/index.html`, { waitUntil: "domcontentloaded" });
   assert((await interactionPage.locator(".announcement-slide").count()) === 1, "Expected one current homepage event");
   assert(await interactionPage.locator(".announcement-slide").nth(0).isVisible(), "First announcement was not visible");
@@ -98,10 +105,10 @@ assert(!/visionsleadershipclc\.com/.test(redirectRules), "Custom-domain redirect
   assert((await interactionPage.getByText("Organization plan", { exact: true }).count()) === 1, "Organization pricing plan was not shown");
   assert((await interactionPage.locator("#organizations").count()) === 1, "Organization content was not combined into the course page");
   assert((await interactionPage.locator(".course-coaching-card").count()) === 0, "Retired standalone coaching offers are still shown");
-  const expectedKajabiOffers = ["2iG2qEMr"];
-  const kajabiLinks = await interactionPage.locator('a[href*="monique-foster.mykajabi.com/offers/"]').evaluateAll((links) => links.map((link) => link.href));
-  for (const offerId of expectedKajabiOffers) {
-    assert(kajabiLinks.some((href) => href.includes(`/offers/${offerId}/checkout`)), `Missing Kajabi checkout offer ${offerId}`);
+  const expectedCourseOffers = ["2iG2qEMr"];
+  const courseCheckoutLinks = await interactionPage.locator('a[href*="/offers/"][href$="/checkout"]').evaluateAll((links) => links.map((link) => link.href));
+  for (const offerId of expectedCourseOffers) {
+    assert(courseCheckoutLinks.some((href) => href.includes(`/offers/${offerId}/checkout`)), `Missing course checkout offer ${offerId}`);
   }
   const firstQuestion = interactionPage.locator(".faq-item").first();
   await firstQuestion.locator("summary").click();

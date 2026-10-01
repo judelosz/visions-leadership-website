@@ -12,14 +12,14 @@ This checklist keeps the business accounts in Monique's control. Do not send pas
 6. Confirm that Monique can access the email inbox used for Netlify form notifications.
 7. Be available for two short handoffs during launch: signing in to Netlify and approving the final domain change.
 
-Stripe credentials are not needed to launch this version of the website. The course and coaching buttons use Kajabi. Book checkout can be connected later with Stripe Payment Links after shipping, tax, inventory, receipt, refund, and return settings are confirmed.
+Stripe credentials are not needed to launch this version of the website. The course and coaching buttons use hosted checkout pages. Book checkout can be connected later with Stripe Payment Links after shipping, tax, inventory, receipt, refund, and return settings are confirmed.
 
 ## What Jude/the maintainer will do
 
 1. Keep the website source in a private GitHub repository. Only production website files are included; raw photography, owner email, course source materials, archives, and internal documents are excluded.
 2. Connect that repository to a new Netlify project inside Monique's Netlify account.
 3. Let Netlify build the site using the included configuration and publish only the generated `dist` folder.
-4. Test every page, form, redirect, Kajabi button, travel link, mobile layout, and event listing on the temporary Netlify address.
+4. Test every page, form, redirect, course checkout button, travel link, mobile layout, and event listing on the temporary Netlify address.
 5. Configure form-submission notifications to the business email Monique approves.
 6. Connect the event editor after the repository and Netlify project exist.
 7. Add the production domain in Netlify and prepare the exact DNS records needed for Wix.
@@ -30,7 +30,7 @@ Stripe credentials are not needed to launch this version of the website. The cou
 2. The maintainer links the private repository and confirms that the first production build succeeds.
 3. Monique reviews the temporary `*.netlify.app` preview and approves it.
 4. Submit the contact and organization forms and confirm the submissions and email notifications arrive.
-5. Open every Kajabi checkout from the preview. Do not complete a purchase unless Monique specifically wants a live transaction test.
+5. Open every course checkout from the preview. Do not complete a purchase unless Monique specifically wants a live transaction test.
 6. Record the existing Wix DNS records, especially MX, SPF, DKIM, DMARC, and verification records used by email.
 7. Add `visionsleadershipclc.com` and `www.visionsleadershipclc.com` to Netlify. Make `www.visionsleadershipclc.com` the primary address.
 8. In Wix DNS, change only the website A/CNAME records to the values Netlify provides. Leave email records unchanged.
@@ -73,7 +73,7 @@ For this website, a private Git repository is the practical foundation for autom
 - the temporary preview has Monique's approval;
 - both forms have been tested;
 - the domain and HTTPS work at both the apex and `www` addresses;
-- Kajabi, travel, event, phone, and email links work;
+- Course checkout, travel, event, phone, and email links work;
 - form notifications arrive;
 - the event editor can publish a test change; and
 - Wix remains preserved as an unpublished fallback during the stability period.
